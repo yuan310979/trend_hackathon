@@ -117,6 +117,15 @@ for mssg in mssg_list:
     final_list.append(temp_dict)
 
     json_str = json.dumps(final_list)
+    
+    # Write json string to local file
+    j = json.loads(json_str)
+    with open("mail.json", 'wb') as f:
+        f.write(json_str)
+    
+    # Send json to server
+    """
     req = urllib2.Request('http://192.168.1.23:123')
     req.add_header('Content-Type', 'application/json')
     response = urllib2.urlopen(req, json_str)	
+    """
