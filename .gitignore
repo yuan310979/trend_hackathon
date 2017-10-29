@@ -1,0 +1,8 @@
+.txt
+.eml
+utils/10
+utils/samples
+utils/enron1
+.vscode
+*.csv
+.DS_store
