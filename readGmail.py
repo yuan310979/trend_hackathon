@@ -13,6 +13,7 @@ import requests
 import urllib2
 from nltk import RegexpTokenizer, word_tokenize
 from nltk.corpus import stopwords
+import csv
 
 SCOPES = 'https://www.googleapis.com/auth/gmail.modify' # we are using modify and not readonly, as we will be marking the messages Read
 store = file.Storage('storage.json') 
@@ -27,7 +28,7 @@ label_id_one = 'INBOX'
 unread_msgs = GMAIL.users().messages().list(userId='me',labelIds=[label_id_one]).execute()
 
 mssg_list = unread_msgs['messages']
-print ("Total unread messages in inbox: ", str(len(mssg_list)))
+print ("Total messages in inbox: ", str(len(mssg_list)))
 final_list = [ ]
 
 for mssg in mssg_list:
@@ -116,15 +117,15 @@ for mssg in mssg_list:
     
     final_list.append(temp_dict)
 
-    json_str = json.dumps(final_list)
+json_str = json.dumps(final_list)
     
-    # Write json string to local file
-    j = json.loads(json_str)
-    with open("mail.json", 'wb') as f:
-        f.write(json_str)
-    
-    # Send json to server
+# Write json string to local file
+j = json.loads(json_str)
+with open("user_mail.json", 'wb') as f:
+    f.write(json_str)
+
     """
+    # Send json to server
     req = urllib2.Request('http://192.168.1.23:123')
     req.add_header('Content-Type', 'application/json')
     response = urllib2.urlopen(req, json_str)	
